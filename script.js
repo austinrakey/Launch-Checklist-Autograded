@@ -7,9 +7,9 @@ window.addEventListener("load", function() {
     let listedPlanetsResponse = myFetch();
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
-        console.log(listedPlanets);
+        // console.log(listedPlanets);
     }).then(function () {
-        console.log(pickPlanet(listedPlanets));
+        // console.log(pickPlanet(listedPlanets));
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
         const selectedPlanet = pickPlanet(listedPlanets); // Pick a random planet
         addDestinationInfo(

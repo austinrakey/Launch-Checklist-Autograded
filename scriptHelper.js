@@ -16,6 +16,13 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                  <img src="">
     */
    let target = document.getElementById("missionTarget")
+//    target.outerHTML.replace(/<!--[\s\S]*?-->/g, '');
+//    target.innerHTML.replace(/\s/g,'');
+// document.outerHTML.replace(/<\!--.*?-->/g, "");
+let missionTargetHTML = target.innerHTML.replace(/<!--[\s\S]*?-->/g, '');
+target.innerHTML = missionTargetHTML;
+
+
 
    const h2 = document.createElement('h2');
    h2.textContent = "Mission Destination";
