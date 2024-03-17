@@ -15,6 +15,37 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                  </ol>
                  <img src="">
     */
+   let target = document.getElementById("missionTarget")
+
+   const h2 = document.createElement('h2');
+   h2.textContent = "Mission Destination";
+   
+   const ol = document.createElement('ol');
+   const li1 = document.createElement('li');
+   li1.textContent = `Name: ${name}`;
+   const li2 = document.createElement('li');
+   li2.textContent = `Diameter: ${diameter}`;
+   const li3 = document.createElement('li');
+   li3.textContent = `Star: ${star}`;
+   const li4 = document.createElement('li');
+   li4.textContent = `Distance from Earth: ${distance}`;
+   const li5 = document.createElement('li');
+   li5.textContent = `Number of Moons: ${moons}`;
+   
+   const img = document.createElement('img');
+   img.setAttribute('src', imageUrl);
+
+
+
+   target.appendChild(h2);
+   ol.appendChild(li1);
+   ol.appendChild(li2);
+   ol.appendChild(li3);
+   ol.appendChild(li4);
+   ol.appendChild(li5);
+   target.appendChild(ol);
+   target.appendChild(img);
+
  }
  
  function validateInput(testInput) {
@@ -35,13 +66,12 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     let launchReady = true
     let launchStatus = document.getElementById("launchStatus")
     let launchStatusCheck = document.getElementById("launchStatusCheck")
+    list.style.visibility = "visible"
     // let faultyItems = document.getElementById("faultyItems")
 
 if (validateInput(pilot) === "Not a Number"){
 document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`
-list.style.visibility = "visible"
 } else {
-list.style.visibility = "visible"
 document.getElementById("pilotStatus").innerHTML = `Invalid Pilot Name!`
 launchReady=false
 }
@@ -49,9 +79,7 @@ launchReady=false
 
 if (validateInput(copilot) === "Not a Number"){
     document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`
-    list.style.visibility = "visible"
     } else {
-    list.style.visibility = "visible"
     document.getElementById("copilotStatus").innerHTML = `Invalid Copilot Name!`
     launchReady=false
     }
@@ -60,14 +88,11 @@ if (validateInput(copilot) === "Not a Number"){
 if (validateInput(fuelLevel) === "Is a Number"){
         if (fuelLevel>=10000) {
             document.getElementById("fuelStatus").innerHTML = `Fuel level high enough for launch`
-            list.style.visibility = "visible"
         } else {
-            list.style.visibility = "visible"
             document.getElementById("fuelStatus").innerHTML = `Fuel level too low for launch`
             launchReady = false
         }
         } else {
-        list.style.visibility = "visible"
         document.getElementById("fuelStatus").innerHTML = `Invalid Fuel Level Entry!`
         launchReady=false
         }
@@ -75,14 +100,11 @@ if (validateInput(fuelLevel) === "Is a Number"){
 if (validateInput(cargoLevel) === "Is a Number"){
         if (cargoLevel<=10000) {
             document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`
-            list.style.visibility = "visible"
         } else {
-            list.style.visibility = "visible"
             document.getElementById("cargoStatus").innerHTML = `Cargo mass too heavy for launch`
             launchReady = false
         }
         } else {
-        list.style.visibility = "visible"
         document.getElementById("cargoStatus").innerHTML = `Invalid Cargo Mass Entry!`
         launchReady=false
         }
@@ -115,6 +137,10 @@ if (launchReady === true){
 
 
  function pickPlanet(planets) {
+
+    let randomNo = Math.floor(Math.random() * 6)
+
+    return planets[randomNo]
  }
  
  module.exports.addDestinationInfo = addDestinationInfo;
